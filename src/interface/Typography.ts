@@ -1,3 +1,4 @@
 export interface TypographyInterfaceProps {
-    name?: string;
+  name?: string;
+  ref?: any;
 }

@@ -1,15 +1,6 @@
 import { InputInterfaceProps } from "../interface/Input";
 const Input = ({ type = "text", label }: InputInterfaceProps) => {
   return (
-    // <div className="relative flex flex-col w-full">
-    //   {label && <label className="text-gray-300 mb-1">{label}</label>}
-    //   <input
-    //     placeholder={placeholder}
-    //     type={type}
-    //     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none"
-    //     readOnly={true}
-    //   />
-    // </div>
     <div className="relative w-full min-w-[200px] h-11">
       <input
         className="w-full h-full px-3 py-3 font-sans text-sm font-normal transition-all bg-transparent border rounded-md peer text-blue-gray-700 outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 border-t-transparent focus:border-t-transparent border-blue-gray-200 focus:border-gray-900"

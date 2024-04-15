@@ -1,10 +1,12 @@
 import React, { createContext, useContext, useState } from "react";
 import { DragEndEvent } from "@dnd-kit/core";
 import { Component } from "../interface/Component";
+import { arrayMove } from "@dnd-kit/sortable";
 
 interface ContextProps {
   components: Component[];
   onDragEnd: (event: DragEndEvent) => void;
+  onDragEndMove: (event: DragEndEvent) => void;
   selectedComponent?: Component;
   setSelectedComponent: (selected: Component | undefined) => void;
   deleteComponent: () => void;
@@ -43,6 +45,23 @@ export const ComponentProvider = ({ children }: ProviderProps) => {
     }
   };
 
+  const onDragEndMove = (event: DragEndEvent) => {
+    const { active, over } = event;
+    if (active.id === over?.id) {
+      return;
+    }
+
+    setComponents((prev: any) => {
+      const oldIndex = prev.findIndex(
+        (component: any) => component.id === active.id
+      );
+      const newIndex = prev.findIndex(
+        (component: any) => component.id === over?.id
+      );
+      return arrayMove(prev, oldIndex, newIndex);
+    });
+  };
+
   const deleteComponent = () => {
     const filterComponents = components.filter(
       (component) => component.id !== selectedComponent?.id
@@ -71,6 +90,7 @@ export const ComponentProvider = ({ children }: ProviderProps) => {
     components,
     selectedComponent,
     onDragEnd,
+    onDragEndMove,
     setSelectedComponent,
     deleteComponent,
     updateProperties,
