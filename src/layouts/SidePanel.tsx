@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
+import cuid from "cuid";
 
 import { useDraggable } from "@dnd-kit/core";
-import cuid from "cuid";
 import { useComponentContext } from "../context/componentsContext";
 import { COMPONENT } from "../type";
 
@@ -25,7 +25,7 @@ interface ComponentProps {
 const Component = (props: ComponentProps) => {
   const { component } = props;
   const { title, icon }: { title: string; icon: ReactElement } = component;
-  console.log(component);
+
   const { setNodeRef, transform, listeners, attributes } = useDraggable({
     id: `${COMPONENT}-${title}`, // COMPONENT-Button for button
     data: { type: title, id: cuid(), properties: {} },
@@ -75,7 +75,7 @@ const SidePanel = ({ components }: SidePanelProps) => {
           </div>
         ))}
       </div>
-      {/* <div className="mt-5 text-center">
+      <div className="mt-5 text-center">
         <a
           className="text-blue-500 underline text-lg"
           style={{ margin: 10 }}
@@ -86,7 +86,7 @@ const SidePanel = ({ components }: SidePanelProps) => {
         >
           Download JSON
         </a>
-      </div> */}
+      </div>
     </div>
   );
 };
